@@ -19,7 +19,6 @@ def consulta():
 
 
 def edita():
-    q = db_session.query(Pessoa)
     pessoa = Pessoa.query.filter_by(id=3).first()
     pessoa.nome = 'Bernardo Lopes'
     pessoa.idade = 2
@@ -34,5 +33,5 @@ def exclue():
 if __name__ == '__main__':
     # insere()
     # edita()
-    exclue()
+    # exclue()
     consulta()
