@@ -1,4 +1,4 @@
-from models import Pessoa, db_session
+from models import Pessoa, db_session, Usuario
 
 
 def insere():
@@ -30,8 +30,19 @@ def exclue():
     pessoa.delete()
 
 
+def insere_usuario():
+    usuario = Usuario(login='Kennedy', senha='1234')
+    usuario.save()
+
+
+def consulta_usuario():
+    usuario = Usuario.query.all()
+    for p in usuario:
+        print(p.login, p.senha)
+
+
 if __name__ == '__main__':
-    # insere()
+    insere_usuario()
     # edita()
     # exclue()
-    consulta()
+    consulta_usuario()

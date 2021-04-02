@@ -3,14 +3,30 @@ import json
 from flask_restful import Resource, Api
 
 from habilidade import Habilidade
-from models import Pessoa, Atividade
+from models import Pessoa, Atividade, Usuario
 
+from flask_httpauth import HTTPBasicAuth
+
+
+USUARIOS = {
+    'kennedy': '123',
+    'gabriel': '123'
+}
+
+auth = HTTPBasicAuth()
 app = Flask(__name__)
 api = Api(app)
 
 
-class Dado(Resource):
+@auth.verify_password
+def verificacao(login, senha):
+    if not (login, senha):
+        return False
+    return Usuario.query.filter_by(login=login, senha=senha).first()
 
+
+class Dado(Resource):
+    @auth.login_required
     def get(self, nome):
         pessoa = Pessoa.query.filter_by(nome=nome).first()
         try:
