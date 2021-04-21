@@ -8,7 +8,8 @@ app = Flask(__name__)
 api = Api(app)
 
 desenvolvedores = [{'nome': 'Kennedy', 'hablidade': ['java', 'python']},
-                   {'nome': 'Gabriel', 'hablidade': ['kotlin', 'android']}]
+                   {'nome': 'Gabriel', 'hablidade': ['kotlin', 'android']},
+                   {'nome': 'Bernardo', 'hablidade': ['Python', 'android']}]
 
 
 class Desenvolvedor(Resource):
